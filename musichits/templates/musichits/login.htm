@@ -1,0 +1,33 @@
+{% extends 'musichits/basic.htm' %}
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<h2 style="padding-top: 1%;padding-bottom: 1%;text-align: center;font-family: 'Verdana';color:#1ED760;">Login</h2>
+{% load static %}
+<div class="container my-3r">
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" style="z-index: -9999;position: fixed;">
+        <img src="{% static 'musichits/head.jpg'%}" class="d-block w-100 h-50" alt="...">
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center align-items-center">
+    <form action="/musichits/login" method="POST">{% csrf_token %}
+      <div class="form-group">
+        <label for="exampleInputEmail1">Username</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username"
+          placeholder="Your Username" style="width: 250px;">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password"
+          style="width: 250px;">
+      </div>
+      <button type="submit" class="btn btn-outline-danger">Login</button>
+    </form>
+  </div>
+
+</div>
+
+{% endblock %}

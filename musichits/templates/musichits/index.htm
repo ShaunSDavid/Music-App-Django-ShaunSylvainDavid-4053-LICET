@@ -1,0 +1,51 @@
+{%extends 'musichits/basic.htm'%}
+{% block title%}MusicHits{% endblock %}
+
+{% block body %}
+{% load static %}
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" style="z-index: -9999;position: fixed;">
+      <img src="{% static 'musichits/head.jpg'%}" class="d-block w-100 h-50" alt="...">
+    </div>
+    <div>
+      <h3 style="padding-top: 2%;padding-left: 4rem;  font-family: 'Verdana';color: #1ED760;z-index: 1000;">Trending
+        Songs</h3>
+
+      <div class="row" style="flex-direction: row;padding-left: 3rem;">
+        {% for i in song%}
+        <div style="padding-left: 2%; padding-top: 1%;">
+          <div class="card" style="width: 18rem;height:20rem; border-radius: 10px;background-color: transparent;">
+            <img src="{{i.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title" style="color: aliceblue;">{{i.name}}</h5>
+              <p class="card-text" style="color: #1ED760;">Movie: {{i.movie}}</p>
+              <a href="/musichits/songs/{{i.song_id}}" class="btn btn-outline-danger ">Add to playlist</a>
+              <a href="/musichits/songs/{{i.song_id}}" class="btn btn-outline-danger ">Play now</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <hr>
+
+      <h3 style="padding-top: 2%;padding-left: 4rem;  font-family: 'Verdana';color:#1ED760;">Your Playlist</h3>
+
+      <div class="row" style="flex-direction: row; padding-left: 3rem;">
+        {% for i in watch reversed %}
+        <div style="padding-left: 2%; padding-top: 1%;">
+          <div class="card" style="width: 18rem;height:20rem; border-radius: 10px;background-color: transparent;">
+            <img src="{{i.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title" style="color:aliceblue;">{{i.name}}</h5>
+              <p class="card-text" style="color: #1ED760;">Movie: {{i.movie}}</p>
+              <a href="/musichits/songs/{{i.song_id}}" class="btn btn-outline-danger ">Play now</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <hr>
+      {% endblock %}
+    </div>
+  </div>

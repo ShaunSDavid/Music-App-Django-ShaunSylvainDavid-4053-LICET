@@ -1,0 +1,42 @@
+{%extends 'musichits/basic.htm'%}
+{% block title%}Musichits{% endblock %}
+
+{% block body %}
+{% load static %}
+<h2 style="padding-top: 1%;padding-bottom: 1%;text-align: center;font-family:  'Verdana';color:#1ED760;">Your
+  Playlist
+</h2>
+
+{% if song|length < 1 %} <h3 style="text-align: center; padding-top: 5%;">You have no song in your Playlist</h3>
+  {% endif %}
+
+  <div class="container">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" style="z-index: -9999;position: fixed;">
+          <img src="{% static 'musichits/head.jpg'%}" class="d-block w-100 h-50" alt="...">
+        </div>
+      </div>
+    </div>
+    {% for i in song reversed %}
+    <div class="card mb-4" style="background-color:  transparent;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="{{i.image}}" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title" style="color: #1ED760; font-weight: 550;">{{i.name}}</h5>
+            <!-- <p class="card-text">Tags: {{i.tags}}</p> -->
+            <p class="card-text">Movie: {{i.movie}}</p>
+            <a href="/musichits/songs/{{i.song_id}}"><button class="btn btn-outline-danger">Play now</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+  </div>
+
+  {% endblock %}
